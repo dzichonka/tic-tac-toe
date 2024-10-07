@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic Tac Toe</title>
+  <meta name="title" content="Tic Tac Toe" />
+  <meta name="description" content="Fun project to learn Frontend development and Javascript" />
+  <!-- <meta property="og:type" content="website" /> -->
+  <meta property="og:url" content="./assets/img/preview.png" />
+  <meta property="og:title" content="Tic Tac Toe" />
+  <meta property="og:description" content="Fun project to learn Frontend development and Javascript" />
+  <meta property="og:image" content="./assets/img/preview.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+  <link rel="manifest" href="./assets/favicon/site.webmanifest">
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+  <audio class="win-sound" src="./assets/sounds/win.wav"></audio>
+  <audio class="lose-sound" src="./assets/sounds/lose.wav"></audio>
+  <audio class="tie-sound" src="./assets/sounds/tie.wav"></audio>
+
+  <header>
+    <div class="container">
+      <h1>Tic-Tac-Toe</h1>
+      <h2>Build with HTML, CSS, JavaScript and lots of love!</h2>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="start-game modal modal-open">
+      <div class="modal-window">
+        <p>Pick a symbol</p>
+        <div class="modal-btns">
+          <button class="modal-btn btn-x" onclick="startGame('X')"><i class="fa-solid fa-xmark fa-2xl"></i></button>
+          <button class="modal-btn btn-o" onclick="startGame('O')"><i class="fa-solid fa-o fa-xl"></i></button>
+          <!-- <button onclick="startGame('X')">Крестик</button>
+              <button onclick="startGame('O')">Нолик</button> -->
+        </div>
+      </div>
+    </div>
+
+
+    <div class="game-over modal modal-close">
+      <div class="modal-window">
+        <p class="result" id="result"></p>
+        <div class="modal-btns">
+          <button class="modal-btn" onclick="resetGame()">New Game</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container content">
+
+      <div class="board" id="board"></div>
+      <div class="scorebord">
+        <h2>Results:</h2>
+        <div class="score" id="scoreboard"></div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-wraper">
+        <!-- <div class="footer-item rsschool"><a class="link" href="https://rs.school/courses/javascript-preschool-ru"
+            target="_blank" rel="noopener noreferrer"><img class="link-img" src="./assets/icons/rsschool.svg"
+              alt="rsschool icon"></a>
+        </div> -->
+        <div class="footer-item github"><a class="link" href="https://github.com/dzichonka" target="_blank"
+            rel="noopener noreferrer"><img class="link-img" src="./assets/icons/github.svg" alt="github icon"></a></div>
+        <!-- <div class="footer-item year">2024</div> -->
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/script.js"></script>
+</body>
+
+</html>

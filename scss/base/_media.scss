@@ -1,0 +1,57 @@
+@media (max-width: 768px) {
+  .gallery-item {
+    width: calc(50% - 20px);
+    padding: 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  body {
+    font-size: 12px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .search-input {
+    transform: translateX(50px);
+    height: 30px;
+  }
+
+  .clear-btn {
+    width: 26px;
+    height: 26px;
+
+  }
+
+  footer {
+
+    .rsschool,
+    .year {
+      display: none;
+    }
+
+    .footer-item {
+      margin: 0 auto;
+    }
+
+    .link-img {
+      height: 30px;
+    }
+  }
+}
+
+@media (max-width: 380px) {
+  body {
+    font-size: 10px;
+  }
+
+  .gallery-item {
+    width: calc(100% - 20px);
+  }
+
+  .search-input {
+    width: 150px;
+  }
+}
