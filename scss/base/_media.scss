@@ -1,9 +1,4 @@
-@media (max-width: 768px) {
-  .gallery-item {
-    width: calc(50% - 20px);
-    padding: 20px;
-  }
-}
+@media (max-width: 768px) {}
 
 @media (max-width: 500px) {
   body {
@@ -14,15 +9,37 @@
     padding: 10px;
   }
 
-  .search-input {
-    transform: translateX(50px);
-    height: 30px;
-  }
+  .modal {
+    font-size: 24px;
 
-  .clear-btn {
-    width: 26px;
-    height: 26px;
+    &-window {
+      padding: 10px;
+      height: 260px;
+      width: 280px;
+      gap: 10px;
+    }
 
+    &-btns {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    &-btn {
+      all: unset;
+      padding: 20px;
+      font-size: 24px;
+      cursor: pointer;
+      transition: all 0.5s ease;
+
+      &:hover {
+        scale: 1.2;
+      }
+
+      i {
+        color: $dark-color;
+      }
+    }
   }
 
   footer {
@@ -45,13 +62,5 @@
 @media (max-width: 380px) {
   body {
     font-size: 10px;
-  }
-
-  .gallery-item {
-    width: calc(100% - 20px);
-  }
-
-  .search-input {
-    width: 150px;
   }
 }
