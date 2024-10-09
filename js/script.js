@@ -1,9 +1,11 @@
 'use strict';
-const boardElement = document.querySelector('.board');
+const boardElem = document.querySelector('.board');
 const resultElement = document.querySelector('.result');
-const scoreboardElement = document.querySelector('.score');
+const scoreboard = document.querySelector('.score');
 const modalStart = document.querySelector('.start-game');
 const modalEnd = document.querySelector('.game-over');
+const resBtn = document.querySelector('.result-btn');
+
 
 const winSound = document.querySelector('.win-sound');
 const loseSound = document.querySelector('.lose-sound');
@@ -31,13 +33,19 @@ const winPatterns = [
 ];
 
 function showModal(modal) {
-  modal.classList.add('moda-open');
-  modal.classList.remove('modal-close');
+  modal.classList.add('open');
+  modal.classList.remove('close');
+  for (const cell of boardElem.children) {
+    cell.classList.add('disabled');
+  }
 }
 
 function closeModal(modal) {
-  modal.classList.remove('moda-open');
-  modal.classList.add('modal-close');
+  modal.classList.remove('open');
+  modal.classList.add('close');
+  for (const cell of boardElem.children) {
+    cell.classList.remove('disabled');
+  }
 }
 
 function startGame(pick) {
@@ -52,7 +60,8 @@ function startGame(pick) {
 function makeMove(index) {
   if (gameActive && !board[index]) {
     board[index] = currentPlayer;
-    boardElement.children[index].innerHTML = currentPlayer === 'X' ? x : o;
+    boardElem
+      .children[index].innerHTML = currentPlayer === 'X' ? x : o;
     moves++;
     if (checkWin()) {
       endGame(currentPlayer, moves);
@@ -68,19 +77,51 @@ function makeMove(index) {
 }
 
 function computerMove() {
+  if (!board[4]) {
+    makeMove(4);
+    return;
+  }
+  const winMove = find2of3(computerSymbol);
+  if (winMove !== null) {
+    makeMove(winMove);
+    return;
+  }
+  const loseMove = find2of3(playerSymbol);
+  if (loseMove !== null) {
+    makeMove(loseMove);
+    return;
+  }
   let availableMoves = board.map((v, i) => v === null ? i : null).filter(v => v !== null);
   let randomIndex = availableMoves[Math.floor(Math.random() * availableMoves.length)];
   makeMove(randomIndex);
+}
+
+function find2of3(symbol) {
+  for (let pattern of winPatterns) {
+    const [a, b, c] = pattern;
+    if (board[a] === symbol && board[b] === symbol && !board[c]) {
+      return c;
+    }
+    if (board[a] === symbol && !board[b] && board[c] === symbol) {
+      return b;
+    }
+    if (!board[a] && board[b] === symbol && board[c] === symbol) {
+      return a;
+    }
+  }
+  return null;
 }
 
 function checkWin() {
   for (let pattern of winPatterns) {
     const [a, b, c] = pattern;
     if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-      // Добавляем класс .win к выигрышной линии
-      boardElement.children[a].children[0].classList.add('win');
-      boardElement.children[b].children[0].classList.add('win');
-      boardElement.children[c].children[0].classList.add('win');
+      boardElem
+        .children[a].children[0].classList.add('win');
+      boardElem
+        .children[b].children[0].classList.add('win');
+      boardElem
+        .children[c].children[0].classList.add('win');
       return true;
     }
   }
@@ -102,7 +143,7 @@ function endGame(winner, movesCount) {
   showModal(modalEnd);
   resultElement.innerHTML = `${message}<br>Amount of moves: ${movesCount}`;
   gameActive = false;
-  for (const cell of boardElement.children) {
+  for (const cell of boardElem.children) {
     cell.classList.add('disabled');
   }
   saveResult({ message, moves: movesCount });
@@ -119,9 +160,16 @@ function saveResult(result) {
 }
 function renderScoreboard() {
   const results = JSON.parse(localStorage.getItem('game-results')) || [];
-  scoreboardElement.innerHTML = results.map((result, index) => `<div>${index + 1}. ${result.message}, Steps: ${result.moves}</div>`).join('');
+  scoreboard.innerHTML = results.map((result, index) => `<div>${index + 1}. ${result.message}, Steps: ${result.moves}</div>`).join('');
 }
 renderScoreboard();
+
+resBtn.addEventListener('click', () => showModal(scoreboard));
+window.addEventListener('click', (e) => {
+  if (e.target !== resBtn && scoreboard.classList.contains('open')) {
+    closeModal(scoreboard);
+  }
+});
 
 function resetGame() {
   closeModal(modalEnd);
@@ -131,18 +179,18 @@ function resetGame() {
   gameActive = true;
   resultElement.textContent = '';
   showModal(modalStart);
-  for (const cell of boardElement.children) {
+  for (const cell of boardElem
+    .children) {
     cell.innerHTML = '';
-    cell.classList.remove('disabled');
   }
 }
 
 function createBoard() {
   for (let i = 0; i < 9; i++) {
     const cell = document.createElement('div');
-    cell.classList.add('cell');
+    cell.classList.add('cell', 'disabled');
     cell.addEventListener('click', () => makeMove(i));
-    boardElement.appendChild(cell);
+    boardElem.appendChild(cell);
   }
 }
 createBoard();

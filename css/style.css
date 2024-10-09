@@ -52,6 +52,7 @@ main {
 }
 
 .content {
+  height: calc(100vh - 250px);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -59,13 +60,13 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: 10vh;
+  gap: 30px;
 }
 
 i {
@@ -76,11 +77,11 @@ i.win {
   color: rgb(255, 0, 0);
 }
 
-.modal-open {
+.open {
   display: block;
 }
 
-.modal-close {
+.close {
   display: none;
 }
 
@@ -88,25 +89,16 @@ i.win {
   color: rgb(25, 41, 47);
   font-size: 32px;
   text-align: center;
-  background: rgba(0, 30, 33, 0.516);
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
 }
 .modal-window {
   padding: 50px;
-  position: fixed;
-  top: 70%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  height: 260px;
+  width: 380px;
   margin: 0;
   z-index: 999;
   border-radius: 20px;
-  -webkit-box-shadow: 0 0 200px 50px rgb(25, 41, 47);
-          box-shadow: 0 0 200px 50px rgb(25, 41, 47);
+  -webkit-box-shadow: 0 0 40px 50px rgb(25, 41, 47);
+          box-shadow: 0 0 40px 50px rgb(25, 41, 47);
   background: #f3ce00;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -124,11 +116,17 @@ i.win {
   gap: 20px;
 }
 .modal-btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   gap: 20px;
 }
 .modal-btn {
   all: unset;
-  padding: 30px;
+  padding: 20px;
   font-size: 24px;
   cursor: pointer;
   -webkit-transition: all 0.5s ease;
@@ -170,8 +168,9 @@ i.win {
   pointer-events: none;
 }
 
-#scoreboard {
+.score {
   margin: 20px auto;
+  height: 200px;
 }
 
 footer .footer-wraper {
@@ -205,12 +204,6 @@ footer .year {
   font-size: 24px;
 }
 
-@media (max-width: 768px) {
-  .gallery-item {
-    width: calc(50% - 20px);
-    padding: 20px;
-  }
-}
 @media (max-width: 500px) {
   body {
     font-size: 12px;
@@ -218,14 +211,37 @@ footer .year {
   .container {
     padding: 10px;
   }
-  .search-input {
-    -webkit-transform: translateX(50px);
-            transform: translateX(50px);
-    height: 30px;
+  .modal {
+    font-size: 24px;
   }
-  .clear-btn {
-    width: 26px;
-    height: 26px;
+  .modal-window {
+    padding: 10px;
+    height: 260px;
+    width: 280px;
+    gap: 10px;
+  }
+  .modal-btns {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    gap: 20px;
+  }
+  .modal-btn {
+    all: unset;
+    padding: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+  .modal-btn:hover {
+    scale: 1.2;
+  }
+  .modal-btn i {
+    color: rgb(25, 41, 47);
   }
   footer .rsschool,
   footer .year {
@@ -241,11 +257,5 @@ footer .year {
 @media (max-width: 380px) {
   body {
     font-size: 10px;
-  }
-  .gallery-item {
-    width: calc(100% - 20px);
-  }
-  .search-input {
-    width: 150px;
   }
 }/*# sourceMappingURL=style.css.map */
