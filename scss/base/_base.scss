@@ -43,7 +43,7 @@ main {
 }
 
 .content {
-    height: calc(100vh - 250px);
+    height: 600px;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -116,7 +116,8 @@ i.win {
     grid-template-columns: repeat(3, 100px);
     grid-template-rows: repeat(3, 100px);
     gap: 5px;
-    margin: 20px auto;
+    margin: 10px auto;
+    color: $main-color;
     background-color: $main-color;
 }
 

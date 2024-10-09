@@ -52,7 +52,7 @@ main {
 }
 
 .content {
-  height: calc(100vh - 250px);
+  height: 600px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -144,7 +144,8 @@ i.win {
   grid-template-columns: repeat(3, 100px);
   grid-template-rows: repeat(3, 100px);
   gap: 5px;
-  margin: 20px auto;
+  margin: 10px auto;
+  color: #f3ce00;
   background-color: #f3ce00;
 }
 
@@ -209,16 +210,26 @@ footer .year {
     font-size: 12px;
   }
   .container {
-    padding: 10px;
+    padding: 0;
+  }
+  .board {
+    grid-template-columns: repeat(3, 75px);
+    grid-template-rows: repeat(3, 75px);
+    gap: 5px;
+    margin: 10px auto;
+  }
+  .cell {
+    width: 75px;
+    height: 75px;
   }
   .modal {
-    font-size: 24px;
+    font-size: 16px;
   }
   .modal-window {
-    padding: 10px;
-    height: 260px;
+    padding: 5px;
+    height: 140px;
     width: 280px;
-    gap: 10px;
+    gap: 5px;
   }
   .modal-btns {
     display: -webkit-box;
@@ -227,7 +238,7 @@ footer .year {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
-    gap: 20px;
+    gap: 5px;
   }
   .modal-btn {
     all: unset;
@@ -242,6 +253,10 @@ footer .year {
   }
   .modal-btn i {
     color: rgb(25, 41, 47);
+  }
+  .score {
+    margin: 5px auto;
+    height: 100px;
   }
   footer .rsschool,
   footer .year {
