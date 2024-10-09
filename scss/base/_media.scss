@@ -6,23 +6,35 @@
   }
 
   .container {
-    padding: 10px;
+    padding: 0;
+  }
+
+  .board {
+    grid-template-columns: repeat(3, 75px);
+    grid-template-rows: repeat(3, 75px);
+    gap: 5px;
+    margin: 10px auto;
+  }
+
+  .cell {
+    width: 75px;
+    height: 75px;
   }
 
   .modal {
-    font-size: 24px;
+    font-size: 16px;
 
     &-window {
-      padding: 10px;
-      height: 260px;
+      padding: 5px;
+      height: 140px;
       width: 280px;
-      gap: 10px;
+      gap: 5px;
     }
 
     &-btns {
       display: flex;
       justify-content: space-between;
-      gap: 20px;
+      gap: 5px;
     }
 
     &-btn {
@@ -40,6 +52,11 @@
         color: $dark-color;
       }
     }
+  }
+
+  .score {
+    margin: 5px auto;
+    height: 100px;
   }
 
   footer {
